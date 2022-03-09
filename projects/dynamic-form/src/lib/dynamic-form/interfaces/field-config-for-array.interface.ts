@@ -4,10 +4,10 @@ import { IKeyValueInString } from "./key-value.interface";
 
 export interface IFieldConfigForArrayConfig extends IFieldConfigBased {
     type: EFieldConfigType.Array;
-    type_config: IArrayConfig;
+    type_config: IFieldArrayConfig;
 }
 
-export interface IArrayConfig {
+interface IFieldArrayConfig {
     hierarchy_level?: {
         cur_level: number;
         max_level: number;

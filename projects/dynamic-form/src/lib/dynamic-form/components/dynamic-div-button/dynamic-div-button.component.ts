@@ -9,9 +9,9 @@ import { IDiv } from '../../interfaces/div.interface';
   styleUrls: ['./dynamic-div-button.component.css'],
 })
 export class DynamicDivButtonComponent
-  implements OnInit, IDiv<IDivConfigForButton[]>
+  implements OnInit, IDiv
 {
-  config!: IDivConfig<IDivConfigForButton[]>;
+  config!: IDivConfig;
   index!: number;
   isLoading: boolean[] = [];
 

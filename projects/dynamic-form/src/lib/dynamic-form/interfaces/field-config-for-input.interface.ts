@@ -5,10 +5,10 @@ import { IKeyValueInString } from './key-value.interface';
 
 export interface IFieldConfigForInputConfig extends IFieldConfigBased {
     type: EFieldConfigType.Input;
-    type_config: IInputConfig;
+    type_config: IFieldInputConfig;
 }
 
-export interface IInputConfig {
+interface IFieldInputConfig {
     readonly?: boolean;
     type: EFieldConfigInputType;
     list?: boolean;

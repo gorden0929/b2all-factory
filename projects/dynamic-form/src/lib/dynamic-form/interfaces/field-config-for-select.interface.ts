@@ -5,10 +5,10 @@ import { IMultiSelect } from './multi-select.interface';
 
 export interface IFieldConfigForSelectConfig extends IFieldConfigBased {
     type: EFieldConfigType.Select;
-    type_config: ISelectConfig;
+    type_config: IFieldSelectConfig;
 }
 
-export interface ISelectConfig {
+interface IFieldSelectConfig {
     /**
     * Only accept dataset in the outer join manner for
     * dependant combo box

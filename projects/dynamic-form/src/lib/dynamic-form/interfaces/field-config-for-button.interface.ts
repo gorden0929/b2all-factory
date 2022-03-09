@@ -3,10 +3,10 @@ import { IFieldConfigBased } from "./field-config.interface";
 
 export interface IFieldConfigForButtonConfig extends IFieldConfigBased {
     type: EFieldConfigType.Button;
-    type_config: IButtonConfig;
+    type_config: IFieldButtonConfig;
 }
 
-export interface IButtonConfig {
+interface IFieldButtonConfig {
     type: 'button' | 'submit'; // reset should be just refresh the page
     onclick_fn?: () => Promise<void>;
     css_class: {

@@ -3,10 +3,10 @@ import { IFieldConfig, IFieldConfigBased } from './field-config.interface';
 
 export interface IFieldConfigForObjectConfig extends IFieldConfigBased {
     type: EFieldConfigType.Object;
-    type_config: IObjectConfig;
+    type_config: IFieldObjectConfig;
 }
 
-export interface IObjectConfig {
+interface IFieldObjectConfig {
     field_configs: IFieldConfig[];
     css_class: {
         group_label: string;

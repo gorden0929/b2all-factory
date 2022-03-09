@@ -16,9 +16,7 @@ import { cs } from 'src/app/country-state';
   styleUrls: ['./dynamic-form.component.sass'],
 })
 export class DynamicFormComponent implements OnInit {
-  sectionConfigs = new Array<
-    IDivConfig<IDivConfigForHeadings | IDivConfigForForm>
-  >(2);
+  sectionConfigs = new Array<IDivConfig>(2);
 
   constructor() { }
 
@@ -55,7 +53,7 @@ export class DynamicFormComponent implements OnInit {
 
   myTemplateWithData(
     data: any
-  ): IDivConfig<IDivConfigForForm> {
+  ): IDivConfig {
     return {
       content: {
         form_unique_name: 'form01',

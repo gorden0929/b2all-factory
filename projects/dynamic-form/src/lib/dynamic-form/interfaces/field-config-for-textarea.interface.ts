@@ -3,10 +3,10 @@ import { IFieldConfigBased } from "./field-config.interface";
 
 export interface IFieldConfigForTextareaConfig extends IFieldConfigBased {
     type: EFieldConfigType.Textarea;
-    type_config: ITextareaConfig;
+    type_config: IFieldTextareaConfig;
 }
 
-export interface ITextareaConfig {
+export interface IFieldTextareaConfig {
     row_count: number;
     col_count?: number;
     css_class: {

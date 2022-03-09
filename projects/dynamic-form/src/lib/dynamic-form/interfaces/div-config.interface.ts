@@ -1,9 +1,19 @@
 import { EDivConfigType } from '../enums/div-config-type.enum';
+import { IDivConfigForButton } from './div-config-for-button.interface';
+import { IDivConfigForForm } from './div-config-for-form.interface';
+import { IDivConfigForHeadings } from './div-config-for-headings.interface';
 
-export interface IDivConfig<T> {
-    content: T;
+export type IDivConfig = IDivConfigForButton | IDivConfigForHeadings | IDivConfigForForm | IDivConfigForOther;
+
+interface IDivConfigForOther {
+    content: any;
     type: EDivConfigType;
 }
+
+// export interface IDivConfig<T> {
+//     content: T;
+//     type: EDivConfigType;
+// }
 
 // a page can have multiple section
 // a section is fix with one design but with top bottom left right divided area
