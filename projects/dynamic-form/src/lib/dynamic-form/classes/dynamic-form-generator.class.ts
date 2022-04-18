@@ -331,6 +331,17 @@ export class DynamicFormGenerator {
                   element.async_validation_fn
                 )
               );
+              if (elementControl.type === 'datalist') {
+                group.addControl(
+                  `${elementControl.name}_key`,
+                  this.createControl2(
+                    false,
+                    undefined,
+                    undefined,
+                    undefined
+                  )
+                );
+              }
             });
             group.setValidators(element.validation_fn ?? null);
             break;

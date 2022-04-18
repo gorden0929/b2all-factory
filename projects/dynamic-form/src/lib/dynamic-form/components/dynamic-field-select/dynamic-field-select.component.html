@@ -40,17 +40,19 @@
 </ng-template>
 
 <ng-template #datalistTemplate let-control="control" let-i="i" [formGroup]="group">
+    <input type="hidden" [formControlName]="control.name">
     <input type="text" [id]="generateId(formName, control.name, arrayIndex) + 'select'"
         [ngClass]="getCssClasses(group.controls[control.name].touched, (group.controls[control.name].valid && !(control.name === group.errors?.field_name)))"
-        [formControlName]="control.name" [attr.list]="generateId(formName, control.name, arrayIndex) + 'datalist'"
+        [attr.list]="generateId(formName, control.name, arrayIndex) + 'datalist'"
         [placeholder]="'Select ' + (control.placeholder ? control.placeholder : control.label)"
-        [readonly]="control.readonly" (change)="onChange($event, i)">
+        [readonly]="control.readonly" [formControlName]="control.name+'_key'"
+        (keyup)="datalistOnChange($event, control.name, i)" (change)="datalistOnChange($event, control.name, i)">
 
     <ng-container *ngIf="group.controls[control.name].touched && control.name === group.errors?.field_name">
         <b2all-validator-hint [validation]="group.errors"></b2all-validator-hint>
     </ng-container>
     <datalist [id]="generateId(formName, control.name, arrayIndex) + 'datalist'">
-        <option *ngFor="let choice of latestDatabase['key_value_pair_' + i]" [value]="choice[control.value_field]"
+        <option *ngFor="let choice of latestDatabase['key_value_pair_' + i]" [value]="choice[control.key_field]"
             [label]="control.display_key ? choice[control.key_field] : ''">
     </datalist>
 </ng-template>

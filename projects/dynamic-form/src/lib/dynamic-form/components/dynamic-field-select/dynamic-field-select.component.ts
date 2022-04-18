@@ -3,6 +3,7 @@ import { FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { IFieldConfigForSelectConfig, ISelectConfig } from '../../interfaces/field-config-for-select.interface';
 import { IField } from '../../interfaces/field.interface';
+import { IKeyValueInString } from '../../interfaces/key-value.interface';
 import { IMultiSelect } from '../../interfaces/multi-select.interface';
 import { DynamicFieldSelectService } from './dynamic-field-select.service';
 
@@ -83,6 +84,14 @@ export class DynamicFieldSelectComponent implements OnInit, IField, OnDestroy {
   // push a changes to the combo box selection changed.
   onChange(value: any, index: number): void {
     this.privateDynamicFieldSelectService.setValue(value.target.value, index);
+  }
+
+  datalistOnChange(event: any, controlName: string, index: number): void {
+    const keyvalues = this.latestDatabase['key_value_pair_' + index];
+    const keyvalue = keyvalues.find((x: IKeyValueInString) => x.key === event.target.value) ?? event.target.value;
+    this.group.controls[controlName].setValue(keyvalue.value);
+    this.group.controls[controlName].markAsTouched();
+    this.privateDynamicFieldSelectService.setValue(keyvalue.value, index);
   }
 
   generateId(
