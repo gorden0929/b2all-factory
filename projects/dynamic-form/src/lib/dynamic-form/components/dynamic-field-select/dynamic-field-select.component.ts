@@ -87,7 +87,11 @@ export class DynamicFieldSelectComponent implements OnInit, IField, OnDestroy {
   }
 
   datalistOnChange(event: any, controlName: string, index: number): void {
-    const keyvalues = this.latestDatabase['key_value_pair_' + index];
+    const keyvalues = this.latestDatabase[`key_value_pair_${index}`];
+    if (!keyvalues) {
+      this.group.controls[controlName].markAsTouched();
+      return;
+    }
     const keyvalue = keyvalues.find((x: IKeyValueInString) => x.key === event.target.value) ?? event.target.value;
     this.group.controls[controlName].setValue(keyvalue.value);
     this.group.controls[controlName].markAsTouched();

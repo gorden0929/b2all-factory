@@ -45,8 +45,8 @@
         [ngClass]="getCssClasses(group.controls[control.name].touched, (group.controls[control.name].valid && !(control.name === group.errors?.field_name)))"
         [attr.list]="generateId(formName, control.name, arrayIndex) + 'datalist'"
         [placeholder]="'Select ' + (control.placeholder ? control.placeholder : control.label)"
-        [readonly]="control.readonly" [formControlName]="control.name+'_key'"
-        (keyup)="datalistOnChange($event, control.name, i)" (change)="datalistOnChange($event, control.name, i)">
+        [readonly]="control.readonly" (keyup)="datalistOnChange($event, control.name, i)"
+        (change)="datalistOnChange($event, control.name, i)">
 
     <ng-container *ngIf="group.controls[control.name].touched && control.name === group.errors?.field_name">
         <b2all-validator-hint [validation]="group.errors"></b2all-validator-hint>
