@@ -69,6 +69,9 @@ const recursiveMultiselectFind =
         const found = datasets?.find(data => {
             return data.value === controlValue[keys[index]];
         });
+        if (controlValue[keys[index]] === '' || controlValue[keys[index]] === undefined) {
+            return null;
+        }
         if (!found) {
             return { message: `Invalid ${keys[index]}`, field_name: keys[index] };
         }
