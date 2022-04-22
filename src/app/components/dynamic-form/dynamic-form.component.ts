@@ -111,9 +111,9 @@ export class DynamicFormComponent implements OnInit {
       {
         name: 'country_selection',
         type: EFieldConfigType.Select,
-        validation_fn: getValidators([
-          { type: EFormValidator.ValueExist, param: { keys: ['country', 'state', 'city'], datasets: cs } },
-        ]),
+        // validation_fn: getValidators([
+        //   { type: EFormValidator.ValueExist, param: { keys: ['country', 'state', 'city'], datasets: cs } },
+        // ]),
         type_config: {
           dataset: cs,
           controls: [
@@ -174,111 +174,111 @@ export class DynamicFormComponent implements OnInit {
         css_class: 'col-lg-2',
       },
 
-      {
-        name: 'students',
-        display_text: 'List of student',
-        type: EFieldConfigType.Array,
-        type_config: {
-          table_column_names: [
-            'First name',
-            'Last name',
-            'Gender rbtn',
-            'Gender',
-          ],
-          enable_default_options: [
-            {
-              key: 'Is primary focal point',
-              value: 'is_focal_point_primary',
-            },
-            {
-              key: 'Is secondary focal point',
-              value: 'is_focal_point_secondary',
-            },
-          ],
-          field_configs: [
-            {
-              name: 'student_first_name',
-              type: EFieldConfigType.Input,
-              type_config: {
-                type: EFieldConfigInputType.Text,
-                list: false,
-                css_class: {
-                  group: 'form-group',
-                  group_label: '',
-                  input: 'form-control',
-                  input_label: 'mb-1',
-                },
-              },
-            },
-            {
-              name: 'student_last_name',
-              type: EFieldConfigType.Input,
-              type_config: {
-                type: EFieldConfigInputType.Text,
-                list: false,
-                css_class: {
-                  group: 'form-group',
-                  group_label: '',
-                  input: 'form-control',
-                  input_label: 'mb-1',
-                },
-              },
-            },
-            {
-              name: 'result',
-              // display_text: 'Select your age group:',
-              type: EFieldConfigType.Input,
-              type_config: {
-                type: EFieldConfigInputType.Radio,
-                list: true,
-                dataset: [
-                  { key: '3 Months of 5k KM', value: '0.25' },
-                  { key: '6 Months of 5k KM', value: '0.5' },
-                  { key: '9 Months of 5k KM', value: '0.75' },
-                  { key: '12 Months of 5k KM', value: '1' },
-                ],
-                // placeholder: 'Select',
-                css_class: {
-                  group: 'form-check form-check-inline',
-                  group_label: '',
-                  input: 'form-check-input',
-                  input_label: 'form-check-label',
-                },
-              },
-            },
+      // {
+      //   name: 'students',
+      //   display_text: 'List of student',
+      //   type: EFieldConfigType.Array,
+      //   type_config: {
+      //     table_column_names: [
+      //       'First name',
+      //       'Last name',
+      //       'Gender rbtn',
+      //       'Gender',
+      //     ],
+      //     enable_default_options: [
+      //       {
+      //         key: 'Is primary focal point',
+      //         value: 'is_focal_point_primary',
+      //       },
+      //       {
+      //         key: 'Is secondary focal point',
+      //         value: 'is_focal_point_secondary',
+      //       },
+      //     ],
+      //     field_configs: [
+      //       {
+      //         name: 'student_first_name',
+      //         type: EFieldConfigType.Input,
+      //         type_config: {
+      //           type: EFieldConfigInputType.Text,
+      //           list: false,
+      //           css_class: {
+      //             group: 'form-group',
+      //             group_label: '',
+      //             input: 'form-control',
+      //             input_label: 'mb-1',
+      //           },
+      //         },
+      //       },
+      //       {
+      //         name: 'student_last_name',
+      //         type: EFieldConfigType.Input,
+      //         type_config: {
+      //           type: EFieldConfigInputType.Text,
+      //           list: false,
+      //           css_class: {
+      //             group: 'form-group',
+      //             group_label: '',
+      //             input: 'form-control',
+      //             input_label: 'mb-1',
+      //           },
+      //         },
+      //       },
+      //       {
+      //         name: 'result',
+      //         // display_text: 'Select your age group:',
+      //         type: EFieldConfigType.Input,
+      //         type_config: {
+      //           type: EFieldConfigInputType.Radio,
+      //           list: true,
+      //           dataset: [
+      //             { key: '3 Months of 5k KM', value: '0.25' },
+      //             { key: '6 Months of 5k KM', value: '0.5' },
+      //             { key: '9 Months of 5k KM', value: '0.75' },
+      //             { key: '12 Months of 5k KM', value: '1' },
+      //           ],
+      //           // placeholder: 'Select',
+      //           css_class: {
+      //             group: 'form-check form-check-inline',
+      //             group_label: '',
+      //             input: 'form-check-input',
+      //             input_label: 'form-check-label',
+      //           },
+      //         },
+      //       },
 
-            {
-              name: 'student_gender_selection',
-              type: EFieldConfigType.Select,
-              type_config: {
-                dataset: [
-                  { key: 'Male', value: 'male' },
-                  { key: 'Female', value: 'female' },
-                ],
-                controls: [
-                  {
-                    name: 'student_gender',
-                    label: '',
-                    key_field: 'key',
-                    value_field: 'value',
-                    value: '',
-                    disabled: true,
-                  },
-                ],
-                css_class: {
-                  group: '',
-                  select: 'form-select',
-                  select_label: 'mb-1',
-                },
-              },
-            },
-          ],
-          css_class: {
-            add_button: 'btn btn-sm btn-primary',
-            del_button: 'btn btn-sm btn-danger',
-          },
-        },
-      },
+      //       {
+      //         name: 'student_gender_selection',
+      //         type: EFieldConfigType.Select,
+      //         type_config: {
+      //           dataset: [
+      //             { key: 'Male', value: 'male' },
+      //             { key: 'Female', value: 'female' },
+      //           ],
+      //           controls: [
+      //             {
+      //               name: 'student_gender',
+      //               label: '',
+      //               key_field: 'key',
+      //               value_field: 'value',
+      //               value: '',
+      //               disabled: true,
+      //             },
+      //           ],
+      //           css_class: {
+      //             group: '',
+      //             select: 'form-select',
+      //             select_label: 'mb-1',
+      //           },
+      //         },
+      //       },
+      //     ],
+      //     css_class: {
+      //       add_button: 'btn btn-sm btn-primary',
+      //       del_button: 'btn btn-sm btn-danger',
+      //     },
+      //   },
+      // },
 
       {
         name: 'about_yourself',
@@ -385,37 +385,37 @@ export class DynamicFormComponent implements OnInit {
         },
         css_class: 'col-12',
       },
-      {
-        name: 'addresses',
-        display_text: 'Address list',
-        type: EFieldConfigType.Array,
-        type_config: {
-          table_column_names: ['Address'],
-          enable_default_options: [
-            {
-              key: 'Billing and invoice address',
-              value: 'is_billing_and_invoice_address',
-            },
-            { key: 'Delivery address', value: 'is_delivery_address' },
-          ],
-          field_configs: [
-            {
-              name: 'address',
-              type: EFieldConfigType.Object,
-              type_config: {
-                field_configs: [
-                  ...templateAddress(undefined, cs, 6, 8),
-                ],
-                css_class: { group_label: '', content: '' },
-              },
-            },
-          ],
-          css_class: {
-            add_button: 'btn btn-sm btn-primary',
-            del_button: 'btn btn-sm btn-danger',
-          },
-        },
-      }
+      // {
+      //   name: 'addresses',
+      //   display_text: 'Address list',
+      //   type: EFieldConfigType.Array,
+      //   type_config: {
+      //     table_column_names: ['Address'],
+      //     enable_default_options: [
+      //       {
+      //         key: 'Billing and invoice address',
+      //         value: 'is_billing_and_invoice_address',
+      //       },
+      //       { key: 'Delivery address', value: 'is_delivery_address' },
+      //     ],
+      //     field_configs: [
+      //       {
+      //         name: 'address',
+      //         type: EFieldConfigType.Object,
+      //         type_config: {
+      //           field_configs: [
+      //             ...templateAddress(undefined, cs, 6, 8),
+      //           ],
+      //           css_class: { group_label: '', content: '' },
+      //         },
+      //       },
+      //     ],
+      //     css_class: {
+      //       add_button: 'btn btn-sm btn-primary',
+      //       del_button: 'btn btn-sm btn-danger',
+      //     },
+      //   },
+      // }
     ];
   }
 

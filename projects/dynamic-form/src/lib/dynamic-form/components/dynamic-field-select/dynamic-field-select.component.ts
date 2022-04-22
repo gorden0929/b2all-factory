@@ -85,6 +85,10 @@ export class DynamicFieldSelectComponent implements OnInit, IField, OnDestroy {
     this.privateDynamicFieldSelectService.setValue(value.target.value, index);
   }
 
+  onSelectSearchChange(value: string, index: number): void {
+    this.privateDynamicFieldSelectService.setValue(value, index);
+  }
+
   generateId(
     formName: string,
     controlName: string,

@@ -40,7 +40,7 @@
 </ng-template>
 
 <ng-template #datalistTemplate let-control="control" let-i="i" [formGroup]="group">
-    <input type="text" [id]="generateId(formName, control.name, arrayIndex) + 'select'"
+    <!-- <input type="text" [id]="generateId(formName, control.name, arrayIndex) + 'select'"
         [ngClass]="getCssClasses(group.controls[control.name].touched, (group.controls[control.name].valid && !(control.name === group.errors?.field_name)))"
         [formControlName]="control.name" [attr.list]="generateId(formName, control.name, arrayIndex) + 'datalist'"
         [placeholder]="'Select ' + (control.placeholder ? control.placeholder : control.label)"
@@ -52,5 +52,13 @@
     <datalist [id]="generateId(formName, control.name, arrayIndex) + 'datalist'">
         <option *ngFor="let choice of latestDatabase['key_value_pair_' + i]" [value]="choice[control.value_field]"
             [label]="control.display_key ? choice[control.key_field] : ''">
-    </datalist>
+    </datalist> -->
+    <ng-select [formControlName]="control.name" (change)="onSelectSearchChange($event, i)" [virtualScroll]="true"
+        [placeholder]="'Select ' + (control.placeholder ? control.placeholder : control.label)">
+        <ng-option *ngFor="let choice of latestDatabase['key_value_pair_' + i]" [value]="choice[control.value_field]">
+            {{choice[control.key_field]}}</ng-option>
+    </ng-select>
+    <ng-container *ngIf="group.controls[control.name].touched && control.name === group.errors?.field_name">
+        <b2all-validator-hint [validation]="group.errors"></b2all-validator-hint>
+    </ng-container>
 </ng-template>
