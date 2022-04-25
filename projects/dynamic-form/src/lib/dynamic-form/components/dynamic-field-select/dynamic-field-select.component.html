@@ -12,31 +12,44 @@
             <b2all-validator-hint *ngIf="group.controls[control.name].errors"
                 [validation]="group.controls[control.name].errors"></b2all-validator-hint>
         </div>
+        <div class="collapse" [id]="control.name + 'button'">
+            <div class="card card-body">
+                Some placeholder content for the collapse component. This panel is hidden by default but revealed when
+                the user activates the relevant trigger.
+            </div>
+        </div>
     </div>
 </div>
 
 <ng-template #selectTemplate let-control="control" let-i="i" [formGroup]="group">
-    <select [ngClass]="
-    control.validation_fn ? 
-        group.controls[control.name].touched ? 
-            group.controls[control.name].valid ? 
-                detailConfig.css_class.select ? detailConfig.css_class.select + ' is-valid' : 'is-valid' 
-            : detailConfig.css_class.select ? detailConfig.css_class.select + ' is-invalid': 'is-invalid' 
-        : detailConfig.css_class.select 
-    : detailConfig.css_class.select" [attr.id]="generateId(formName, config.name, arrayIndex) + 'select'"
-        [attr.aria-label]="'Select ' + (control.placeholder ? control.placeholder : control.label)"
-        [formControlName]="control.name" (change)="onChange($event, i)">
+    <div class="input-group">
+        <select [ngClass]="
+        control.validation_fn ?
+            group.controls[control.name].touched ?
+                group.controls[control.name].valid ?
+                    detailConfig.css_class.select ? detailConfig.css_class.select + ' is-valid' : 'is-valid'
+                : detailConfig.css_class.select ? detailConfig.css_class.select + ' is-invalid': 'is-invalid'
+            : detailConfig.css_class.select
+        : detailConfig.css_class.select" [attr.id]="generateId(formName, config.name, arrayIndex) + 'select'"
+            [attr.aria-label]="'Select ' + (control.placeholder ? control.placeholder : control.label)"
+            [formControlName]="control.name" (change)="onChange($event, i)">
 
 
-        <option [value]="''" [disabled]="control.disabled ?? false">Select {{ control.placeholder ?
-            control.placeholder : control.label }}</option>
+            <option [value]="''" [disabled]="control.disabled ?? false">Select {{ control.placeholder ?
+                control.placeholder : control.label }}</option>
 
-        <option *ngFor="let choice of latestDatabase['key_value_pair_' + i]" [value]="choice[control.value_field]"
-            [disabled]="group.controls[control.name].value !== choice[control.value_field] ? control.disabled ?? false : false">
-            {{ choice[control.key_field] }}
-        </option>
+            <option *ngFor="let choice of latestDatabase['key_value_pair_' + i]" [value]="choice[control.value_field]"
+                [disabled]="group.controls[control.name].value !== choice[control.value_field] ? control.disabled ?? false : false">
+                {{ choice[control.key_field] }}
+            </option>
 
-    </select>
+        </select>
+        <button class="btn btn-primary" type="button" data-bs-toggle="collapse"
+            [attr.data-bs-target]="'#' + control.name + 'button'" aria-expanded="false"
+            [attr.aria-controls]="control.name + 'button'">
+            Button
+        </button>
+    </div>
 </ng-template>
 
 <ng-template #datalistTemplate let-control="control" let-i="i" [formGroup]="group">
