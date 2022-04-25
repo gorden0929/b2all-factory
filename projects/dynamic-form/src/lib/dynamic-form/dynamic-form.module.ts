@@ -1,6 +1,6 @@
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { DynamicFormComponent } from './components/dynamic-form.component';
 
@@ -25,6 +25,8 @@ import { DynamicDivFormComponent } from './components/dynamic-div-form/dynamic-d
 import { ValidatorHintComponent } from './components/validator-hint/validator-hint.component';
 import { MultiselectDatasetComponent } from './components/multiselect-dataset/multiselect-dataset.component';
 import { FormDesignareComponent } from './components/form-designare/form-designare.component';
+import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
@@ -50,7 +52,10 @@ import { FormDesignareComponent } from './components/form-designare/form-designa
   ],
   imports: [
     CommonModule,
-    ReactiveFormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    TypeaheadModule,
+    BrowserAnimationsModule,
   ],
   exports: [
     DynamicFormComponent,

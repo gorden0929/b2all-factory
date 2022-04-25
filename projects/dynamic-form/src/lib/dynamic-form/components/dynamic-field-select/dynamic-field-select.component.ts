@@ -29,6 +29,8 @@ export class DynamicFieldSelectComponent implements OnInit, IField, OnDestroy {
 
   latestDatabase: { [key: string]: any } = {};
 
+  typeahead: any[] = [];
+
   constructor(
     // @Inject('css_class') private privateCssClass: ICssClass,
     private privateDynamicFieldSelectService: DynamicFieldSelectService
@@ -42,6 +44,7 @@ export class DynamicFieldSelectComponent implements OnInit, IField, OnDestroy {
     const savedSelectedValue: string[] = [];
     this.detailConfig.controls.forEach(element => {
       savedSelectedValue.push(this.group.controls[element.name].value ?? null);
+      this.typeahead.push(this.group.controls[element.name].value);
     });
 
     this.privateDynamicFieldSelectService.setDatabase(this.detailConfig.dataset, this.detailConfig.controls.length, savedSelectedValue);
@@ -129,6 +132,12 @@ export class DynamicFieldSelectComponent implements OnInit, IField, OnDestroy {
 
   getSpecialCss(): string {
     return this.config.type_config.css_class ? ` ${this.config.type_config.css_class}` : '';
+  }
+
+  onSelect(event: any, controlName: string, index: number): void {
+    const valueField = this.detailConfig.controls.find(X => X.name === controlName)!.value_field;
+    this.group.controls[controlName].setValue(event.item[valueField]);
+    this.privateDynamicFieldSelectService.setValue(event.item[valueField], index);
   }
 
 }
