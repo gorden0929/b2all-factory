@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { IFieldConfigForSelectConfig, ISelectConfig } from '../../interfaces/field-config-for-select.interface';
@@ -10,7 +10,8 @@ import { DynamicFieldSelectService } from './dynamic-field-select.service';
   selector: 'b2all-dynamic-field-select',
   templateUrl: './dynamic-field-select.component.html',
   styleUrls: ['./dynamic-field-select.component.css'],
-  providers: [DynamicFieldSelectService]
+  providers: [DynamicFieldSelectService],
+  encapsulation: ViewEncapsulation.None,
 })
 export class DynamicFieldSelectComponent implements OnInit, IField, OnDestroy {
 
